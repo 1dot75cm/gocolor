@@ -1,5 +1,5 @@
 # ![poster](https://github.com/nrechn/gocolor/raw/master/misc/goColor-poster.png)
-[![GitHub license](https://img.shields.io/badge/license-GPL%20V3.0-red.svg)](https://raw.githubusercontent.com/nrechn/bspwm-config/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-GPL%20V3.0-red.svg?style=flat-square)](https://raw.githubusercontent.com/nrechn/bspwm-config/master/LICENSE)
 [![Go Walker](http://gowalker.org/api/v1/badge)](http://gowalker.org/github.com/nrechn/gocolor)
 [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/nrechn/gocolor) 
 [![Build Status](http://img.shields.io/travis/nrechn/gocolor.svg?style=flat-square)](https://travis-ci.org/nrechn/gocolor)
@@ -10,7 +10,7 @@
 # Insatllation
 
 ```shell
-go get github.com/nrechn/gocolor
+$ go get github.com/nrechn/gocolor
 ```
 
 <br>
@@ -45,6 +45,11 @@ func main() {
 }
 ```
 
+You can also download this [gocolor-example.go](https://github.com/nrechn/gocolor/raw/master/misc/gocolor-example.go) file and test it in your own computer. After download it, simply run the command below:
+```shell
+$ go run gocolor-example.go
+```
+
 <br>
 # Feature Details
 
@@ -63,3 +68,10 @@ func main() {
 # Contributing
 
 If you have any suggestion, idea, or bug report; feel free to open an issue on this repository.
+
+<br>
+# Note/ToDo
+
+You may notice that Travis-CI doesn't show the color output dutring test. It might be because Travis-CI doesn't support 255 colors. It is recommended that download this [gocolor-example.go](https://github.com/nrechn/gocolor/raw/master/misc/gocolor-example.go) file and try on your own computer.
+
+I am going to bring more arguments/parameters and functions to goColor. (e.g. force use 8/16/88 Colors)
