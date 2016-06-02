@@ -1,6 +1,10 @@
-# goColor
+# ![poster](https://github.com/nrechn/gocolor/raw/master/misc/goColor-poster.png)
+[![GitHub license](https://img.shields.io/badge/license-GPL%20V3.0-red.svg)](https://raw.githubusercontent.com/nrechn/bspwm-config/master/LICENSE)
+[![Go Walker](http://gowalker.org/api/v1/badge)](http://gowalker.org/github.com/nrechn/gocolor)
+[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/nrechn/gocolor) 
+[![Build Status](http://img.shields.io/travis/nrechn/gocolor.svg?style=flat-square)](https://travis-ci.org/nrechn/gocolor)
 
-goColor is a Go (golang) package for generating colorized output in terminals simply and easily. It supports 256 colors which should be the limit of modern terminal emulators. Other features such as "underline", "bold", and "highlight" are alse included.
+**goColor** is a Go (golang) package for generating colorized output in terminals simply and easily. It supports 256 colors which should be the limit of modern terminal emulators. Other features such as "underline", "bold", and "highlight" are alse included.
 
 <br>
 # Insatllation
@@ -15,36 +19,34 @@ go get github.com/nrechn/gocolor
 ```go
 package main
 
-import (
-	"github.com/nrechn/gocolor"
-)
+import "github.com/nrechn/gocolor"
 
 func main() {
-        // Print in cyan color.
-        gocolor.Color("This is cyan", "cyan")
-        
-        // Print red color text in bold .
-        gocolor.Color("This is red in bold", "red", "bold")
-        
-        // Print in light yellow color.
-        gocolor.Color("This is yellow in light", "yellow", "light")
-        
-        // Print without new line. Allow following texts displayed in the this (same) line.
-        gocolor.Color("green", "This is green without new line following.", "sameline")
-        
-        // Add underline to text displayed.
-        gocolor.Color("white", "underline", "This is white with underline")
-        
-        // Use 256 color number to indicate the color.
-        gocolor.Color("123", "This is color 87ffff.")
-        
-        // "255" is foreground color, "19" is background color.
-        gocolor.Color("255", "19", "This text in display in #eeeeee foreground color and #0000af background color")
+	// Print in cyan color.
+	gocolor.Color("This is cyan", "cyan")
+
+	// Print red color text in bold .
+	gocolor.Color("This is red in bold", "red", "bold")
+
+	// Print in light yellow color.
+	gocolor.Color("This is yellow in light", "yellow", "light")
+
+	// Print without new line. Allow following texts displayed in the this (same) line.
+	gocolor.Color("green", "This is green without new line following.", "sameline")
+
+	// Add underline to text displayed.
+	gocolor.Color("white", "underline", "This is white with underline")
+
+	// Use 256 color number to indicate the color.
+	gocolor.Color("123", "This is color 87ffff.")
+
+	// "255" is foreground color, "19" is background color.
+	gocolor.Color("255", "19", "This text is display in #eeeeee fg color and #0000af bg color")
 }
 ```
 
 <br>
-# Feature Detail
+# Feature Details
 
 - **Don't care arguments order**. You don't need to care arguments order. Just put string as arguments in whatever order you like.
 - **Underline** support. goColor can also understand `UnderLine`, `Underline`. Or `ul`, `UL`, `Ul`, etc. if you wold like to use only two character to indicate `underline`.

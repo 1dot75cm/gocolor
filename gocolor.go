@@ -52,7 +52,7 @@ func colorCode(color, style string) string {
 	}
 }
 
-func ColorPrint(p colorOption) {
+func colorPrint(p colorOption) {
 	if p.fg != "" {
 		p.fg = "\033[38;5;" + colorCode(p.fg, p.style) + "m"
 	}
@@ -161,5 +161,5 @@ func Color(args ...string) {
 			msgChanged = true
 		}
 	}
-	ColorPrint(c)
+	colorPrint(c)
 }

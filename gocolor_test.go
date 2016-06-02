@@ -21,7 +21,6 @@
 package gocolor
 
 import (
-	"github.com/nrechn/gocolor"
 	"testing"
 )
 
@@ -29,8 +28,8 @@ var colorTestName = []string{"red", "green", "yellow", "blue", "magenta", "cyan"
 
 func TestColor(t *testing.T) {
 	for i := 0; i < cap(colorTestName); i++ {
-		gocolor.Color("Test "+colorTestName[i]+" color: ", "white", "light")
-		gocolor.Color("Light", " "+colorTestName[i]+" ", colorTestName[i], "sameline", "underline")
-		gocolor.Color("white", " "+colorTestName[i]+" ", colorTestName[i])
+		Color("Test "+colorTestName[i]+" color: ", "white", "light")
+		Color("Light", " "+colorTestName[i]+" ", colorTestName[i], "sameline", "underline", "bold")
+		Color("white", " "+colorTestName[i]+" ", colorTestName[i], "bold")
 	}
 }
