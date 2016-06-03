@@ -39,7 +39,7 @@ func TestNon256Color(t *testing.T) {
 	Color("\nTest non-256 color: ", "white", "Bold", "-256", "light")
 	for i := 0; i < cap(colorTestName)-4; i++ {
 		Color("Test "+colorTestName[i]+" color: ", "white", "light", "-256")
-		Color("Light", " "+colorTestName[i]+" ", colorTestName[i], "sameline", "-256", "underline", "bold")
+		Color(" "+colorTestName[i]+" ", colorTestName[i], "sameline", "-256", "underline", "bold")
 		Color("white", " "+colorTestName[i]+" ", colorTestName[i], "bold", "-256")
 	}
 }

@@ -33,6 +33,10 @@ var (
 	bgcolorNon256Light  = []string{"101", "102", "103", "104", "105", "106", "107"}
 )
 
+var (
+	newLineChanged, underLineChanged, msgChanged, non256Changed, fgchanged, bgchanged bool
+)
+
 type colorOption struct {
 	fg, bg, bold, style, msg   string
 	newLine, underLine, non256 bool
@@ -106,6 +110,9 @@ func colorPrint(p colorOption) {
 }
 
 func checkColor(arg string) bool {
+	if fgchanged && bgchanged {
+		return false
+	}
 	for i := 0; i < cap(colorName); i++ {
 		matchColor, _ := regexp.MatchString(colorName[i], arg)
 		if matchColor {
@@ -128,41 +135,58 @@ func checkIf(option, arg string) bool {
 	case "color":
 		return checkColor(arg)
 	case "newLine":
-		return check("^[Ss][A-Za-z]{0,6}[Lle]$", arg)
+		if !newLineChanged {
+			return check("^[Ss][A-Za-z]{0,6}[Lle]$", arg)
+		}
 	case "underLine":
-		return check("^[Uu][A-Za-z]{0,7}[Lle]$", arg)
+		if !underLineChanged {
+			return check("^[Uu][A-Za-z]{0,7}[Lle]$", arg)
+		}
 	case "colorNum":
-		return check("^[1-9][0-9]{0,2}$", arg)
+		if !fgchanged || !bgchanged {
+			return check("^[1-9][0-9]{0,2}$", arg)
+		}
 	case "bold":
 		return check("^[Bb]old$", arg)
 	case "light":
 		return check("^[Ll]ight$", arg)
 	case "-256":
-		return check("-256", arg)
+		if !non256Changed {
+			return check("-256", arg)
+		}
 	}
 	return false
 }
 
+func cleanBool() {
+	newLineChanged = false
+	underLineChanged = false
+	msgChanged = false
+	non256Changed = false
+	fgchanged = false
+	bgchanged = false
+}
+
+// Color accepts features for output texts. Arguments order is not important.
 func Color(args ...string) {
-	var (
-		newLineChanged, underLineChanged, msgChanged, non256Changed bool
-	)
 	c := colorOption{style: "normal", newLine: true, underLine: false, non256: false}
 	for _, arg := range args {
-		if checkIf("newLine", arg) && c.newLine && !newLineChanged {
+		if checkIf("newLine", arg) {
 			c.newLine = false
 			newLineChanged = true
-		} else if checkIf("underLine", arg) && !c.underLine && !underLineChanged {
+		} else if checkIf("underLine", arg) {
 			c.underLine = true
 			underLineChanged = true
-		} else if checkIf("-256", arg) && !c.non256 && !non256Changed {
+		} else if checkIf("-256", arg) {
 			c.non256 = true
 			non256Changed = true
-		} else if (checkIf("color", arg) || checkIf("colorNum", arg)) && (c.fg == "" || c.bg == "") {
+		} else if checkIf("color", arg) || checkIf("colorNum", arg) {
 			if c.fg == "" {
 				c.fg = arg
+				fgchanged = true
 			} else if c.bg == "" {
 				c.bg = arg
+				bgchanged = true
 			}
 		} else if checkIf("bold", arg) && c.bold == "" {
 			c.bold = "bold"
@@ -174,4 +198,5 @@ func Color(args ...string) {
 		}
 	}
 	colorPrint(c)
+	cleanBool()
 }

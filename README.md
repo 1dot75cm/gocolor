@@ -3,7 +3,7 @@
 [![Go Walker](http://gowalker.org/api/v1/badge)](http://gowalker.org/github.com/nrechn/gocolor)
 [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/nrechn/gocolor) 
 [![Build Status](http://img.shields.io/travis/nrechn/gocolor.svg?style=flat-square)](https://travis-ci.org/nrechn/gocolor)
-[![Go Report Card](https://goreportcard.com/badge/github.com/nrechn/gocolor.svg?style=flat-square)](https://goreportcard.com/report/github.com/nrechn/gocolor)
+[![Go Report Card](https://goreportcard.com/badge/github.com/nrechn/gocolor)](https://goreportcard.com/report/github.com/nrechn/gocolor)
 [![Gitter](https://badges.gitter.im/nrechn/gocolor.svg?style=flat-square)](https://gitter.im/nrechn/gocolor?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 **goColor** is a Go (golang) package for generating colorized output in terminals simply and easily. It supports 256 colors which should be the limit of modern terminal emulators. Other features such as "underline", "bold", and "highlight" are alse included.
