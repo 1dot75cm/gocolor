@@ -3,6 +3,8 @@
 [![Go Walker](http://gowalker.org/api/v1/badge)](http://gowalker.org/github.com/nrechn/gocolor)
 [![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/nrechn/gocolor) 
 [![Build Status](http://img.shields.io/travis/nrechn/gocolor.svg?style=flat-square)](https://travis-ci.org/nrechn/gocolor)
+[![Go Report Card](https://goreportcard.com/badge/github.com/nrechn/gocolor.svg?style=flat-square)](https://goreportcard.com/report/github.com/nrechn/gocolor)
+[![Gitter](https://badges.gitter.im/nrechn/gocolor.svg?style=flat-square)](https://gitter.im/nrechn/gocolor?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 **goColor** is a Go (golang) package for generating colorized output in terminals simply and easily. It supports 256 colors which should be the limit of modern terminal emulators. Other features such as "underline", "bold", and "highlight" are alse included.
 
@@ -40,8 +42,8 @@ func main() {
 	// Use 256 color number to indicate the color.
 	gocolor.Color("123", "This is color 87ffff.")
 
-	// "255" is foreground color, "19" is background color.
-	gocolor.Color("255", "19", "This text is display in #eeeeee fg color and #0000af bg color")
+	// "256" is foreground color, "19" is background color.
+	gocolor.Color("256", "19", "This text is display in #eeeeee fg color and #0000af bg color")
 }
 ```
 
@@ -60,7 +62,8 @@ $ go run gocolor-example.go
 - **Highlight** support. It is actually background. (Foreground is the text color). goColor automatically assumes the first color argument is for foreground color, and the second one is for background.
 - **Builtin colors**. The builtin colors are "red", "green", "yellow", "blue", "magenta", "cyan", and "white". It means you can use english word to indicate you would like to use this color for output.
 - **Light colors**. If you would like to display text in light color of builtin colors, simply add `light` argument when you call `gocolor.Color` function.
-- **256 colors** support. Most modern terminal emulators support 256 colors, and goColor supports it as well. The color number can be found in the 256 color chart below.
+- **Non 256 colors** support. goColor supports 8/16 colors as well. By default, goColor generates output in 256 colors. If your terminal emulators only support 8/16 colors, simply add `-256` argument when you call `gocolor.Color` function.
+- **Full 256 colors** support. Most modern terminal emulators support 256 colors, and goColor supports it as well. The color number can be found in the 256 color chart below.
 
 ![Xterm 256 color chart](https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg)
 
@@ -72,6 +75,6 @@ If you have any suggestion, idea, or bug report; feel free to open an issue on t
 <br>
 # Note/ToDo
 
-You may notice that Travis-CI doesn't show the color output dutring test. It might be because Travis-CI doesn't support 255 colors. It is recommended that download this [gocolor-example.go](https://github.com/nrechn/gocolor/raw/master/misc/gocolor-example.go) file and try on your own computer.
+You may notice that Travis-CI doesn't show the color output dutring test. It might be because Travis-CI doesn't support 256 colors. It is recommended that download this [gocolor-example.go](https://github.com/nrechn/gocolor/raw/master/misc/gocolor-example.go) file and try on your own computer.
 
-I am going to bring more arguments/parameters and functions to goColor. (e.g. force use 8/16/88 Colors)
+I am going to bring more arguments/parameters and functions to goColor.

@@ -26,10 +26,20 @@ import (
 
 var colorTestName = []string{"red", "green", "yellow", "blue", "magenta", "cyan", "white", "105", "227", "92", "200"}
 
-func TestColor(t *testing.T) {
+func Test256Color(t *testing.T) {
+	Color("Test 256 color: ", "white", "Bold", "light")
 	for i := 0; i < cap(colorTestName); i++ {
 		Color("Test "+colorTestName[i]+" color: ", "white", "light")
 		Color("Light", " "+colorTestName[i]+" ", colorTestName[i], "sameline", "underline", "bold")
 		Color("white", " "+colorTestName[i]+" ", colorTestName[i], "bold")
+	}
+}
+
+func TestNon256Color(t *testing.T) {
+	Color("\nTest non-256 color: ", "white", "Bold", "-256", "light")
+	for i := 0; i < cap(colorTestName)-4; i++ {
+		Color("Test "+colorTestName[i]+" color: ", "white", "light", "-256")
+		Color("Light", " "+colorTestName[i]+" ", colorTestName[i], "sameline", "-256", "underline", "bold")
+		Color("white", " "+colorTestName[i]+" ", colorTestName[i], "bold", "-256")
 	}
 }
